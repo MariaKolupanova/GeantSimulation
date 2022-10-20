@@ -1,0 +1,4 @@
+/t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/rebuild_cache.dir
+/t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/edit_cache.dir
+/t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/sim.dir
+/t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/Simulation.dir

@@ -1,0 +1,42 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_35c41/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_35c41.dir/build.make CMakeFiles/cmTC_35c41.dir/build
+gmake[1]: вход в каталог «/t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/CMakeTmp»
+Building C object CMakeFiles/cmTC_35c41.dir/src.c.o
+/usr/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_35c41.dir/src.c.o -c /t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_35c41
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35c41.dir/link.txt --verbose=1
+/usr/bin/gcc CMakeFiles/cmTC_35c41.dir/src.c.o -o cmTC_35c41 
+CMakeFiles/cmTC_35c41.dir/src.c.o: In function `main':
+src.c:(.text+0x2d): undefined reference to `pthread_create'
+src.c:(.text+0x39): undefined reference to `pthread_detach'
+src.c:(.text+0x45): undefined reference to `pthread_cancel'
+src.c:(.text+0x56): undefined reference to `pthread_join'
+collect2: ошибка: выполнение ld завершилось с кодом возврата 1
+gmake[1]: *** [CMakeFiles/cmTC_35c41.dir/build.make:99: cmTC_35c41] Ошибка 1
+gmake[1]: выход из каталога «/t2k3/users/kolupanova/g4projects/sim/build/CMakeFiles/CMakeTmp»
+gmake: *** [Makefile:127: cmTC_35c41/fast] Ошибка 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
